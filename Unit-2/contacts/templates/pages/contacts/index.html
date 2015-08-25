@@ -1,0 +1,27 @@
+
+
+{{message}}
+
+
+<div ng-controller = "ContactsController">
+  <h1>Contact App with services</h1>
+  <label for="name">Name</label><input type="text" name="name" ng-model="person.name"></label>
+  <label for="email">Email</label><input type="text" name="email" ng-model="person.email"></label>
+  <label for="phone">Phone</label><input type="text" name="phone" ng-model="person.phone"></label>
+  <button type="button" name="Add Contact" ng-click="submit()">Submit</button>
+
+  <div ng-controller = "ShowContactsController">
+    <label>Search <input ng-model="searchText"></label>
+    <table id="searchTextResults">
+      <tr><th>Name</th><th>Email</th><th>Phone</th></tr>
+      <tr ng-repeat="person in contactData | filter:searchText">
+
+        <td><a ng-href="#/show/{{$index}}">{{person.name}}</a></td>
+
+        <td>{{person.email}}</td>
+        <td>{{person.phone}}</td>
+        <td>{{$index}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
