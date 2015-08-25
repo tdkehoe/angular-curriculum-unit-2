@@ -15,12 +15,10 @@
     <table id="searchTextResults">
       <tr><th>Name</th><th>Email</th><th>Phone</th></tr>
       <tr ng-repeat="person in contactData | filter:searchText">
-
         <td><a ng-href="#/show/{{$index}}">{{person.name}}</a></td>
-
         <td>{{person.email}}</td>
         <td>{{person.phone}}</td>
-        <td>{{$index}}</td>
+        <td><img src="{{person.gif}}"></td>
       </tr>
     </table>
   </div>

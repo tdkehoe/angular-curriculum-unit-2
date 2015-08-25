@@ -4,41 +4,21 @@ angular.module('ContactsApp').controller('ContactsController', ["$scope", "Conta
    $scope.submit = function(){
      console.log("Submitted! I'm third!")
 
-     console.log($scope.person.name);
      var nameString = $scope.person.name;
      var nameStringPlus = nameString.replace(' ', '+').toLowerCase();
-     console.log(nameStringPlus);
      $http({method: 'GET', url: "http://api.giphy.com/v1/gifs/search?q=" + nameStringPlus + "&api_key=dc6zaTOxFJmzC&limit=5"}).success(function(data) {
-       console.log(data.data[0].bitly_gif_url);
-      //  ContactList.addContact( {
-      //    gif: data.data[0].bitly_gif_url
-      //  });
-      //  $scope.contactData = ContactList.contactList;
-      //  console.log($scope.contactData);
-      $scope.person.gif = data.data[0].embed_url;
+      $scope.person.gif = data.data[0].images.fixed_height.url;
+
+      ContactList.addContact( {
+        name: $scope.person.name,
+        email: $scope.person.email,
+        phone: $scope.person.phone,
+        gif: $scope.person.gif
+      });
+
+      $scope.contactData = ContactList.contactList;
+      console.log("I'm last!");
      });
-     console.log("After giphy GET.");
-
-     ContactList.addContact( {
-       name: $scope.person.name,
-       email: $scope.person.email,
-       phone: $scope.person.phone,
-       gif: $scope.person.gif
-     });
-
-     $scope.contactData = ContactList.contactList;
-     console.log($scope.contactData);
-     console.log("I'm last!");
-
-    //  #javascript, jQuery
-    //  var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=dc6zaTOxFJmzC&limit=5");
-    //  xhr.done(function(data) { console.log("success got data", data); });
-
-
-
-
-
-
    };
  }]);
 
