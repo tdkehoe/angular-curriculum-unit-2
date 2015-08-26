@@ -17,6 +17,18 @@ angular.module('PokemonApp').controller('PokemonController', ["$scope", "$http",
 
      $http({method: 'GET', url: "http://pokeapi.co/api/v1/pokemon/" + fiveRandomPokemons[0] + "/"}).success(function(data) {
        console.log(data);
+
+       $scope.pokemon = {
+         name: data.name,
+         types: data.types,
+         moves: data.moves,
+         sprite: data.sprites
+       };
+
+      console.log($scope.pokemon);
+
+
+
      });
 
    });

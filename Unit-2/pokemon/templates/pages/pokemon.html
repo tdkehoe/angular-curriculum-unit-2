@@ -1,7 +1,14 @@
-
-
 {{message}}
 
-
-
 <h1>Pokemon App</h1>
+
+<div class=''>
+  <h2>Name: {{pokemon.name}}</h2>
+  Types: <ul ng-repeat="type in pokemon.types">
+    <li>{{type.name}}</li>
+  </ul>
+  <hr>
+  Moves: <ul ng-repeat="move in pokemon.moves">
+    <li>{{move.name}}</li>
+  </ul>
+</div>
