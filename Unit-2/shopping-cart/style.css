@@ -1,0 +1,71 @@
+body {
+  font-family: sans-serif;
+  width: 960px;
+}
+
+
+header {
+  color: orange;
+  font-style: italic;
+  font-size: 30px;
+
+}
+
+nav {
+  color: gray;
+  /*height: 40px;*/
+  padding: 20px;
+  outline: 1px solid gray;
+  font-size: 16px;
+  /*display: inline-block;*/
+}
+
+.spacer {
+  height: 40px;
+}
+
+.checkout {
+  color: white;
+  font-size: 12pt;
+  background-color: red;
+  float: right;
+  padding: 10px;
+  border-radius: 5px
+}
+
+.teaName, .myShoppingBag, .orderTotal {
+  font-size: 24px;
+}
+
+.quantity {
+  font-size: 24px;
+}
+
+.teaParams {
+  font-weight: bold;
+}
+
+.addTea, .edit {
+  color: white;
+  font-size: 12pt;
+  background-color: orange;
+  padding: 10px;
+  border-radius: 5px
+}
+
+.remove {
+  color: white;
+  font-size: 12pt;
+  background-color: red;
+  padding: 10px;
+  border-radius: 5px
+}
+
+.quantityAddTea, .orderTotal {
+  float: right;
+}
+
+.editRemove {
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -1,0 +1,84 @@
+<header>
+  <h1>Welcome to MEAN Tea!</h1>
+</header>
+
+<nav>
+    <span>Home</span>
+    <span>About</span>
+    <span>Contact</span>
+</nav>
+
+<div class="spacer"></div>
+
+<div ng-controller="TeasController">
+
+  <div>
+    Search by category: <select ng-model="searchByCategory" ng-init="searchByCategory = ''">
+      <option value="hot">Hot</option>
+      <option value="warm">Warm</option>
+      <option value="cold">Cold</option>
+      <option value="spring">Spring</option>
+      <option value="summer">Summer</option>
+      <option value="autumn">Autumn</option>
+      <option value="winter">Winter</option>
+      <option value="lucid">Lucid</option>
+      <option value="dark">Dark</option>
+      <option value="awesome">Awesome</option>
+      <option value="dry">Dry</option>
+    </select>
+
+    Search by name: <input type="text" ng-model="searchByName">
+
+    <a ng-href="#/checkout">
+      <button ng-click="checkout()" ng-show="shoppingCart.length > 0" class="checkout">
+        Checkout | Bag: {{shoppingCart.length}}
+        <ng-pluralize count="shoppingCart.length"
+                       when="{'one': 'Tea',
+                           'other': 'Teas'}">
+        </ng-pluralize>
+      </button>
+    </a>
+
+  </div>
+
+  <div class="spacer"></div>
+
+  <div>
+    <table border=1>
+      <tr>
+        <th width="260px">Tea</th>
+        <th width="700px">Information</th>
+      </tr>
+      <tr ng-repeat="tea in teas | filter: searchByCategory | filter: searchByName">
+        <td><img ng-src="{{tea.imageUrl}}" alt="Tea"></td>
+        <td><span class="teaName">{{tea.name}}</span>
+            <span class="quantityAddTea"><span class="quantity">Quantity:
+              <select ng-model="quantity" name="quantity">
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                </select></span>
+                <button ng-click="addTea(tea, quantity, imageUrl)" class="addTea">Add To Bag</button></span><br>
+          <span class="teaCaffeine"><span class="teaParams">Price: </span>{{tea.price / 100 | currency}}</span><br>
+          <span class="teaCaffeine"><span class="teaParams">Caffeine Scale: </span>{{tea.caffeineScale}}</span><br>
+          <span class="teaIngredients"><span class="teaParams">Ingredients: </span>{{tea.ingredients}}</span><br>
+          <span class="teaIngredients"><span class="teaParams">Rating: </span>{{tea.rating}}</span><br>
+          <span class="teaIngredients"><span class="teaParams">In Stock?: </span>{{tea.inStock}}</span><br>
+          <span class="teaIngredients"><span class="teaParams">Categories: </span>
+            <ul ng-repeat="category in tea.categories">
+              <li>{{category}}</li>
+            </ul>
+          </span><br>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>

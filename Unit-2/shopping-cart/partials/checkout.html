@@ -1,0 +1,47 @@
+<div>
+  <span class="myShoppingBag">My Shopping Bag</span>
+  <span class="orderTotal">Order total: {{ getTotal() / 100 | currency}}</span>
+</div>
+
+
+
+<table border=1>
+  <tr>
+    <th>Tea</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Sub-total</th>
+    <th>&nbsp;</th>
+  <tr>
+  <tr ng-repeat="cart in shoppingCart" ng-show="cart.quantity > 0">
+    <td>
+      <div class="teaName">{{cart.tea}}</div>
+      <div><img ng-src="{{cart.imageUrl}}" alt="Tea"></div>
+      <div>Caffeine Scale: </span>{{cart.caffeineScale}}</div>
+      <div>Ingredients: </span>{{cart.ingredients}}</div>
+      <div>Rating: </span>{{cart.rating}}</div>
+    </td>
+    <td><span ng-show="showEditTea" ng-init="showEditTea = true">{{cart.quantity}}</span>
+      <span ng-hide="showEditTea" class="quantityAddTea"><span class="editQuantity">Quantity:
+        <select ng-model="cart.quantity" name="quantity">
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <option value=7>7</option>
+          <option value=8>8</option>
+          <option value=9>9</option>
+          <option value=10>10</option>
+        </select>
+      </span>
+
+    </td>
+    <td>{{cart.price / 100 | currency}}</td>
+    <td>{{cart.quantity * cart.price / 100 | currency}}</td>
+    <td class="editRemove"><button ng-click="showEditTea = false" class="edit">Edit</button>
+       &nbsp;<button ng-click="cart.quantity = 0" class="remove">Remove</button>
+    </td>
+  </tr>
+</table>
